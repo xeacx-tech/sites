@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Кликер</title>
+
+  <style>
+    body {
+      background-color: #121212;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      color: white;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 42px;
+      font-weight: 700;
+    }
+
+    button {
+      background-color: #1db954;
+      color: black;
+      border: none;
+      padding: 16px 34px;
+      font-size: 24px;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #1ed760;
+      transform: scale(1.05);
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    #achievementBox {
+      position: fixed;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #1db954;
+      color: black;
+      padding: 15px 25px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 20px;
+      transition: top 0.5s ease;
+      box-shadow: 0 8px 25px rgba(29, 185, 84, 0.35);
+    }
+
+    #achievementBox.show {
+      top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="achievementBox"></div>
+
+  <div class="container">
+    <h1>Жми</h1>
+    <button id="clickBtn" onclick="clicker()">0</button>
+  </div>
+
+  <script>
+    let count = 0;
+
+    function showAchievement(text) {
+      const box = document.getElementById("achievementBox");
+      box.textContent = text;
+      box.classList.add("show");
+
+      setTimeout(() => {
+        box.classList.remove("show");
+      }, 2000);
+    }
+
+    function clicker() {
+      count++;
+      document.getElementById("clickBtn").textContent = count;
+
+      if (count === 10) {
+        showAchievement("🏆 Новичок");
+      }
+
+      if (count === 50) {
+        showAchievement("⚡ Любитель");
+      }
+
+      if (count === 100) {
+        showAchievement("🔥 Профессионал");
+      }
+
+      if (count === 500) {
+        showAchievement("💎 Мастер");
+      }
+
+      if (count === 1000) {
+        showAchievement("👑 Легенда");
+      }
+    }
+  </script>
+</body>
+</html>
